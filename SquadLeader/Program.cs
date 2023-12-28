@@ -1,8 +1,15 @@
+
+
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using SimpleBlazorCanvas.Data;
+using SquadLeader.Map;
+
+
+var x = new Location(('C', 3), (30,30));
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();

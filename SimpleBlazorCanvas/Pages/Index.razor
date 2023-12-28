@@ -1,0 +1,30 @@
+﻿@page "/"
+
+@inject IJSRuntime JSRuntime
+
+<h3>Draw a square using HTML5 Canvas</h3>
+
+<script>
+    // ...
+    window.drawSquare = () => {
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.rect(50, 50, 100, 100);
+        ctx.stroke();
+    }
+</script>
+
+<canvas id="canvas" width="500" height="500" style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("drawSquare");
+        }
+    }
+}

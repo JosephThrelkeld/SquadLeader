@@ -1,4 +1,4 @@
-namespace SimpleBlazorCanvas.Data;
+namespace SquadLeaderGame.Data;
 
 public class WeatherForecastService
 {

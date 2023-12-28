@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using SimpleBlazorCanvas.Data;
+using SquadLeaderGame.Data;
 using SquadLeader.Map;
 
 

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleBlazorCanvas", "SimpleBlazorCanvas\SimpleBlazorCanvas.csproj", "{ADAB21F9-260D-4348-B8D0-0E299BE17820}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquadLeaderGame", "SquadLeaderGame\SquadLeaderGame.csproj", "{ADAB21F9-260D-4348-B8D0-0E299BE17820}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestSquadLeader", "UnitTestSquadLeader\UnitTestSquadLeader.csproj", "{EF1DE092-F89C-4C7A-8643-281BE3D427CB}"
 EndProject

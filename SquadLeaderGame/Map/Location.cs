@@ -9,7 +9,7 @@ public enum Direction{
     SouthEast
 }
 
-class Location {
+public class Location {
     private (char, int) locCoords;
     private Dictionary<Direction, Location> adjDict = new();  
     public Location((char, int) locCoordsIn, (double, double) absLocationIn) {

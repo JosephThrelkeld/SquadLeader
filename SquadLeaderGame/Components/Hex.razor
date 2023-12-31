@@ -1,8 +1,12 @@
 @namespace SquadLeader
 
  <polygon points="@points" style="fill:lime;stroke:purple;stroke-width:1" />
+ <text x="@TextX" y="@TextY" class="smallAddress">@Address</text>
  
 @code {
+
+    [Parameter]
+    public string? Address { get; set; }
 
     /// <summary>
     /// Center position of the hexagon.
@@ -15,6 +19,9 @@
     /// </summary>
     [Parameter]
     public double Y { get; set; }
+
+    private int TextX => (int) X - 7;
+    private int TextY => (int) Y - (int)(Radius / 2) + 2;
 
     /// <summary>
     /// Radius of the circle that defines the hexagon.

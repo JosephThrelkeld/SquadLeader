@@ -10,7 +10,7 @@
 <svg viewBox="0 0 740 643" xmlns="http://www.w3.org/2000/svg">
 @foreach (var location in Locations)
 {
-    <Hex X="@location.AbsLocation.Item1" Y="@location.AbsLocation.Item2" Radius="@radiusOfHexCircle" />
+    <Hex X="@location.AbsLocation.Item1" Y="@location.AbsLocation.Item2" Radius="@radiusOfHexCircle" Address="@location.LocCoords" />
 }
 </svg>
 

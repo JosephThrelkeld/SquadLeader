@@ -17,4 +17,6 @@ public class Location {
         this.AbsLocation = absLocationIn;
     }
     public (double, double) AbsLocation { get; }
+
+    public string LocCoords => $"{locCoords.Item1}{locCoords.Item2}";
 }

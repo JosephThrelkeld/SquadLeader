@@ -1,11 +1,35 @@
 @page "/map"
 @using Blazor.Extensions
 @using Blazor.Extensions.Canvas
+@using SquadLeader.Map
 
 <h3>Squad Leader Map</h3>
 
 
 
-<Hex/> 
+<svg viewBox="0 0 740 643" xmlns="http://www.w3.org/2000/svg">
+@foreach (var location in Locations)
+{
+    <Hex X="@location.AbsLocation.Item1" Y="@location.AbsLocation.Item2" Radius="@radiusOfHexCircle" />
+}
+</svg>
 
+@code
+{
+    private int radiusOfHexCircle = 20;
+    public List<Location> Locations { get; set; }  = new List<Location>();
 
+    protected override void OnInitialized()
+    {
+        var distFromCenterToEdge = (Math.Sqrt(3) * radiusOfHexCircle) / 2;
+        for (var i = 0; i < 20; i++)
+        {
+            for (var j = 0; j < 20; j++)
+            {
+                Locations.Add(new(((char)((int)'A' + j), i), 
+                    (radiusOfHexCircle * 1.5 * j + radiusOfHexCircle, 
+                    (distFromCenterToEdge * 2 * i + (distFromCenterToEdge + (j % 2 > 0 ? distFromCenterToEdge: 0))))));
+            }
+        }
+    }
+}

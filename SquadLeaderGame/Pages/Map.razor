@@ -12,12 +12,17 @@
 {
     <Hex X="@location.AbsLocation.Item1" Y="@location.AbsLocation.Item2" Radius="@radiusOfHexCircle" Address="@location.LocCoords" />
 }
+@foreach (var building in Buildings)
+{
+    <Structure Points="@building.Vertices" />
+}
 </svg>
 
 @code
 {
     private int radiusOfHexCircle = 20;
     public List<Location> Locations { get; set; }  = new List<Location>();
+    public List<Building> Buildings { get; set; } = new List<Building>();
 
     protected override void OnInitialized()
     {
@@ -31,5 +36,15 @@
                     (distFromCenterToEdge * 2 * i + (distFromCenterToEdge + (j % 2 > 0 ? distFromCenterToEdge: 0))))));
             }
         }
+
+        var hexWidth = radiusOfHexCircle * 2;
+        var hexHeight = distFromCenterToEdge * 2;
+        var startX = hexWidth * 3 + (hexWidth * 0.25);
+        var startY = hexHeight * 5 + (hexHeight * 0.25);
+        Buildings.Add(new Building([(startX,startY),
+        (startX + (hexWidth * 2),startY),
+        (startX + (hexWidth * 2),startY + (hexHeight * 3) - (hexHeight * 0.50)),
+        (startX,startY + (hexHeight * 3) - (hexHeight * 0.50)),
+        (startX,startY)]));
     }
 }

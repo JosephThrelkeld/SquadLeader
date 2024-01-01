@@ -1,0 +1,16 @@
+@namespace SquadLeader
+
+ <polygon points="@PointsString" style="fill:black;stroke:grey;stroke-width:2;fill-opacity:75%" />
+ 
+@code {
+
+    [Parameter]
+    public List<(double, double)>? Points { get; set; }
+
+    private string PointsString => string.Join(" ", Points.Select(p => $"{p.Item1},{p.Item2}"));
+
+    protected override async Task  OnInitializedAsync()
+    {
+
+    }
+}

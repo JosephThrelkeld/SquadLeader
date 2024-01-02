@@ -1,6 +1,6 @@
 namespace SquadLeader.Map;
 
-public class GeometricCalculator {
+public sealed class GeometricCalculator {
     //Using technique where intersecting two line segments comprised of points: p1, q1; and p2, q2, 
     //have differing orientations of sets of points (counter-clockwise, clockwise, colinear)
     //between (p1,q1,p2) and (p1,q1,p2). The same applies to (p2,q2,p1) and (p2,q2,q1)

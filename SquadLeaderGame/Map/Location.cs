@@ -12,7 +12,7 @@ public enum Direction{
     SouthEast
 }
 
-public class Location {
+public sealed class Location {
     // override object.Equals
     public override bool Equals(object obj)
     {

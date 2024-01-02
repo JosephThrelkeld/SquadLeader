@@ -1,7 +1,7 @@
 namespace SquadLeader.Map;
 using System.Text.Json.Serialization;
 
-public class TerrainElement {
+public sealed class TerrainElement {
     // override object.Equals
     public override bool Equals(object obj)
     {

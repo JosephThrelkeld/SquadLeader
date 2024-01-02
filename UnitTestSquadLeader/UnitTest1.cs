@@ -35,17 +35,17 @@ public class TestMap {
     public void TestEqualsOverload() {
         List<Location> locations = [new Location(('A', 1), (20,20)), new Location(('A', 2), (40,60))];
         List<TerrainElement> terrainElements = [new TerrainElement([(0,0), (0,30), (30,30), (30,0)], [locations[0]], 'B'),];
-        GameMap testMap = new GameMap(terrainElements,[new SquadPiece("test")],locations);
+        GameMap testMap = new GameMap(terrainElements,[new SquadPiece(4,6,7)],locations);
         List<Location> locations1 = [new Location(('A', 1), (20,20)), new Location(('A', 2), (40,60))];
         List<TerrainElement> terrainElements1 = [new TerrainElement([(0,0), (0,30), (30,30), (30,0)], [locations[0]], 'B'),];
-        GameMap testMap1 = new GameMap(terrainElements1,[new SquadPiece("test")],locations1);
+        GameMap testMap1 = new GameMap(terrainElements1,[new SquadPiece(4,6,7)],locations1);
         Assert.IsTrue(testMap.Equals(testMap1));
     }
     [TestMethod]
     public void TestSaveAndLoad() {
         List<Location> locations = [new Location(('A', 1), (20,20)), new Location(('A', 2), (40,60))];
         List<TerrainElement> terrainElements = [new TerrainElement([(0,0), (0,30), (30,30), (30,0)], [locations[0]], 'B'),];
-        GameMap testMap = new GameMap(terrainElements,[],locations);
+        GameMap testMap = new GameMap(terrainElements,[new SquadPiece(4,6,7)],locations);
         testMap.SaveGameMap("testGame");
         GameMap loadedMap = GameMap.LoadGameMap("testGame");
         Console.WriteLine(loadedMap.Locations.Count);

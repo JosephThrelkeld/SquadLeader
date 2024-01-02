@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 using System.Linq;
 using System.Text.Json;
 
-public class GameMap {
+public sealed class GameMap {
     // override object.Equals
     public override bool Equals(object obj)
     {
@@ -29,20 +29,20 @@ public class GameMap {
 
         return this.Locations.SequenceEqual(castedObj.Locations) &&
                this.TerrainElements.SequenceEqual(castedObj.TerrainElements) &&
-               this.GamePieces.SequenceEqual(castedObj.GamePieces);
+               this.SquadPieces.SequenceEqual(castedObj.SquadPieces);
     }
     // override object.GetHashCode
     public override int GetHashCode() { return base.GetHashCode(); }
     [JsonConstructor]
-    public GameMap(List<TerrainElement> terrainElements, List<GamePiece> gamePieces, List<Location> locations) {
+    public GameMap(List<TerrainElement> terrainElements, List<SquadPiece> squadPieces, List<Location> locations) {
         TerrainElements = terrainElements;
-        GamePieces = gamePieces;
+        SquadPieces = squadPieces;
         Locations = locations;
     }
     [JsonInclude]
     public List<TerrainElement> TerrainElements { get; } = [];
     [JsonInclude]
-    public List<GamePiece> GamePieces { get; } = [];
+    public List<SquadPiece> SquadPieces { get; } = [];
     [JsonInclude]
     public List<Location> Locations { get; } = [];
     private static int RadiusOfHexCircle = 20;

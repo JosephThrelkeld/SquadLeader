@@ -1,30 +1,7 @@
 namespace UnitTestSquadLeader;
 using SquadLeader.Map;
-
-[TestClass]
-public class TestBuilding
-{
-    [TestMethod]
-    public void TestLocation()
-    {   
-        var locations = new List<Location>
-        {
-            new(('H', 2), (30, 30)),
-            new(('B', 5), (20, 10)),
-        };
-
-        var expectedLocations = new List<Location>
-        {
-            new(('B', 5), (20, 10)),
-        };
-
-        var testBuilding = new Building([(0,0), (25,0), (25,15), (0,15)]);
-
-        var locationsInBuilding = testBuilding.GetLocations(locations);
-
-        CollectionAssert.AreEquivalent(expectedLocations,locationsInBuilding);
-    }
-}
+using SquadLeader.GamePiece;
+using System.Runtime.InteropServices;
 
 [TestClass]
 public class TestGeometricCalculator {
@@ -49,5 +26,32 @@ public class TestGeometricCalculator {
         //Colinear tests
         Assert.IsTrue(GeometricCalculator.Intersects(point5,point6,point7,point8));
         Assert.IsFalse(GeometricCalculator.Intersects(point5,point7,point6,point8));
+    }
+}
+
+[TestClass]
+public class TestMap {
+    [TestMethod]
+    public void TestEqualsOverload() {
+        List<Location> locations = [new Location(('A', 1), (20,20)), new Location(('A', 2), (40,60))];
+        List<TerrainElement> terrainElements = [new TerrainElement([(0,0), (0,30), (30,30), (30,0)], [locations[0]], 'B'),];
+        GameMap testMap = new GameMap(terrainElements,[new SquadPiece("test")],locations);
+        List<Location> locations1 = [new Location(('A', 1), (20,20)), new Location(('A', 2), (40,60))];
+        List<TerrainElement> terrainElements1 = [new TerrainElement([(0,0), (0,30), (30,30), (30,0)], [locations[0]], 'B'),];
+        GameMap testMap1 = new GameMap(terrainElements1,[new SquadPiece("test")],locations1);
+        Assert.IsTrue(testMap.Equals(testMap1));
+    }
+    [TestMethod]
+    public void TestSaveAndLoad() {
+        List<Location> locations = [new Location(('A', 1), (20,20)), new Location(('A', 2), (40,60))];
+        List<TerrainElement> terrainElements = [new TerrainElement([(0,0), (0,30), (30,30), (30,0)], [locations[0]], 'B'),];
+        GameMap testMap = new GameMap(terrainElements,[],locations);
+        testMap.SaveGameMap("testGame");
+        GameMap loadedMap = GameMap.LoadGameMap("testGame");
+        Console.WriteLine(loadedMap.Locations.Count);
+        Console.WriteLine(testMap.Locations.Count);
+
+        Assert.IsTrue(File.Exists("testGame"));
+        Assert.IsTrue(testMap.Equals(loadedMap));
     }
 }

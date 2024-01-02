@@ -10,7 +10,7 @@
 <svg viewBox="0 0 740 643" xmlns="http://www.w3.org/2000/svg">
 @foreach (var location in Locations)
 {
-    <Hex X="@location.AbsLocation.Item1" Y="@location.AbsLocation.Item2" Radius="@radiusOfHexCircle" Address="@location.LocCoords" />
+    <Hex X="@location.AbsLocation.Item1" Y="@location.AbsLocation.Item2" Radius="@radiusOfHexCircle" Address="@location.LocCoordString" />
 }
 @foreach (var building in Buildings)
 {
@@ -22,7 +22,7 @@
 {
     private int radiusOfHexCircle = 20;
     public List<Location> Locations { get; set; }  = new List<Location>();
-    public List<Building> Buildings { get; set; } = new List<Building>();
+    public List<TerrainElement> Buildings { get; set; } = new List<TerrainElement>();
 
     protected override void OnInitialized()
     {
@@ -41,10 +41,10 @@
         var hexHeight = distFromCenterToEdge * 2;
         var startX = hexWidth * 3 + (hexWidth * 0.25);
         var startY = hexHeight * 5 + (hexHeight * 0.25);
-        Buildings.Add(new Building([(startX,startY),
+        Buildings.Add(new TerrainElement([(startX,startY),
         (startX + (hexWidth * 2),startY),
         (startX + (hexWidth * 2),startY + (hexHeight * 3) - (hexHeight * 0.50)),
         (startX,startY + (hexHeight * 3) - (hexHeight * 0.50)),
-        (startX,startY)]));
+        (startX,startY)], [], 'B'));
     }
 }
